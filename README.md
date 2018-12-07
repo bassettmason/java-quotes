@@ -1,4 +1,10 @@
 ## Popular Book Quotes
 
-This app shows random popular book quotes from .json file.
+App function:
+This application gets and prints a random quote and author from a Json file.
+
+Instructions: 
+after clone save all.
+
+
 
