@@ -10,19 +10,30 @@ import static org.junit.Assert.*;
 
 public class AppTest {
     @Test
-    public void testGetRandomQuoteFromJsonFile() {
-        String randomTestQuote = App.getRandomQuoteFromJsonFile();
+    public void testWebQuoteGetter() {
+        QuoteGetter getter = new WebQuoteGetter();
+        Quote newQuote = getter.getQuote();
 
-        assertTrue(randomTestQuote.contains("--"));
+        assertTrue(newQuote.toString().contains("Ron Swanson"));
     }
 
     @Test
+    public void testFileSystemQuoteGetter() {
+        QuoteGetter getter = new FileSystemQuoteGetter("resources/recentquotes.json");
+        Quote newQuote = getter.getQuote();
+
+        assertTrue(newQuote.toString().contains("--"));
+    }
+    @Test
     public void testGetRandomQuote() {
-        Quote[] quotes = new Quote[]{new Quote("yay", "mason"), new Quote("hello", "mark")};
-        Set<Quote> results = new HashSet<>();
-        for (int i = 0; i < 20; i++) {
-            results.add(App.getRandom(quotes));
+        QuoteGetter getter = new FileSystemQuoteGetter("resources/recentquotes.json");
+
+
+        Quote[] results = new Quote[2];
+
+        for (int i = 0; i < 1; i++) {
+            results[i] = (getter.getQuote());
         }
-        assertTrue(results.size() > 1);
+        assertTrue(results[0] != results[1]);
     }
 }

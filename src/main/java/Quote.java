@@ -14,6 +14,8 @@ public class Quote {
     }
 
     public String toString(){
-        return "Quote: \n" + text + "\n" + "--" + author;
+       String newString = "Quote: \n" + text + "\n" + "--" + author;
+
+       return newString;
     }
 }
